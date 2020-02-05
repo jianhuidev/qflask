@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="/books" method="post">
+    用户名：<input type="text" name="author"><br>
+    书：    <input type="text" name="book"><br>
+    <input type="submit" value="提交"><br>
+    {{hint}}
+</form>
+
+<hr>
+
+<ul>
+    {% for author in authors %}
+        <li>{{ author.name }}<a href="{{ url_for('del_author', a_id = author.id) }}">删除</a></li>
+        <ul>
+            {% for book in author.books %}
+                <li>{{ book.name }}<a href="{{ url_for('del_book', b_id = book.id) }}">删除</a></li>
+            {% else %}
+                <li>无</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+
+</ul>
+
+</body>
+</html>
