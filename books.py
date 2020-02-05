@@ -55,7 +55,7 @@ def aq():
     return render_template('books.html', authors=authors)
 
 
-@app.route('/x', methods=['GET','POST'])
+@app.route('/', methods=['GET','POST'])
 def index():
     # 查询所有作者信息，传递给模板
     authors = Author.query.all()
