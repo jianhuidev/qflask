@@ -55,8 +55,8 @@ def aq():
     return render_template('books.html', authors=authors)
 
 
-@app.route('/books', methods=['GET','POST'])
-def books():
+@app.route('/', methods=['GET','POST'])
+def index():
     # 查询所有作者信息，传递给模板
     authors = Author.query.all()
     # authors = db.session.query(Author)
@@ -114,7 +114,7 @@ def del_book(b_id):
             db.session.rollback()
     else:
         hint = '书未找到'
-    return redirect(url_for('books',hint=hint))
+    return redirect(url_for('index',hint=hint))
 
 
 @app.route('/del_author/<a_id>')
@@ -134,7 +134,7 @@ def del_author(a_id):
             db.session.roolback()
     else:
         hint = '作者未找到'
-    return redirect(url_for('books', hint=hint))
+    return redirect(url_for('index', hint=hint))
 
 
 if __name__ == '__main__':
