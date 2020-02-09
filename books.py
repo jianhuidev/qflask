@@ -114,7 +114,7 @@ def del_book(b_id):
             db.session.rollback()
     else:
         hint = '书未找到'
-    return redirect(url_for('index',hint=hint))
+    return redirect(url_for('index', hint=hint))
 
 
 @app.route('/del_author/<a_id>')

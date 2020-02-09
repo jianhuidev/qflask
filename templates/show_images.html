@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文件上传</title>
+</head>
+<body>
+
+{% if session.filenames %}
+{% for filename in session.filenames %}
+<a href="{{ url_for('get_file', filename=filename) }}" target="_blank">
+    <img src="{{ url_for('get_file', filename=filename) }}">
+</a>
+{% endfor %}
+{% endif %}
+
+</body>
+</html>
